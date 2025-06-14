@@ -26,14 +26,14 @@ const Card = ({ to, setTo, from, setFrom, amount, setAmount, result, setResult }
     e.preventDefault();
 
     // Convert amount
-    axios.get('/convert', { params: { from, to, amount } })
+    axios.get('https://currencyconverterbackend-w64w.onrender.com/convert', { params: { from, to, amount } })
       .then(res => {
         setResult(res.data.result);
       })
       .catch(err => console.error(err));
 
     // Fetch historical data
-    axios.get('/history', { params: { from, to } })
+    axios.get('https://currencyconverterbackend-w64w.onrender.com/history', { params: { from, to } })
       .then(res => {
         const rates = res.data;
         const dates = Object.keys(rates).sort();
